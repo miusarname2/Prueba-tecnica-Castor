@@ -1,0 +1,39 @@
+/* Estilos complementarios a Tailwind para el chat SSE. */
+
+/* Blink del cursor mientras el LLM streamea tokens. */
+.cursor-blink::after {
+  content: "▍";
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+  color: rgb(103, 232, 249);
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* Burbujas */
+.bubble        { max-width: 80%; padding: 0.65rem 0.9rem; border-radius: 0.75rem; white-space: pre-wrap; line-height: 1.45; font-size: 0.9rem; }
+.bubble-user   { background: rgb(6, 78, 89);  align-self: flex-end;   border-bottom-right-radius: 0.15rem; }
+.bubble-agent  { background: rgb(30, 41, 59); align-self: flex-start; border-bottom-left-radius:  0.15rem; }
+.bubble-error  { background: rgb(69, 10, 10); align-self: flex-start; border: 1px solid rgb(239, 68, 68); color: rgb(254, 202, 202); }
+.bubble-block  { background: rgb(66, 32, 6);  align-self: flex-start; border: 1px solid rgb(234, 179, 8);  color: rgb(254, 240, 138); }
+.bubble-meta   { background: transparent; align-self: flex-start; border: 1px dashed rgb(51, 65, 85); color: rgb(148, 163, 184); font-size: 0.75rem; padding: 0.4rem 0.7rem; }
+
+.msg-row { display: flex; flex-direction: column; gap: 0.35rem; }
+
+/* Chips de tools */
+.tool-chip {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  border: 1px solid rgb(51, 65, 85); background: rgb(15, 23, 42);
+  padding: 0.15rem 0.5rem; border-radius: 9999px; font-size: 0.7rem; color: rgb(148, 163, 184);
+}
+.tool-chip.running { border-color: rgb(103, 232, 249); color: rgb(165, 243, 252); }
+.tool-chip.done    { border-color: rgb(74, 222, 128); color: rgb(187, 247, 208); }
+.tool-chip.error   { border-color: rgb(248, 113, 113); color: rgb(254, 202, 202); }
+
+/* JSON expandible */
+details.sources > summary { cursor: pointer; color: rgb(148, 163, 184); font-size: 0.75rem; }
+details.sources pre       { background: rgb(2, 6, 23); padding: 0.5rem; border-radius: 0.5rem; overflow-x: auto; font-size: 0.7rem; margin-top: 0.35rem; }
+
+/* Estado de conexión */
+.dot-idle    { background: rgb(100, 116, 139); }
+.dot-active  { background: rgb(34, 197, 94); box-shadow: 0 0 0 3px rgba(34,197,94,.25); }
+.dot-error   { background: rgb(239, 68, 68); }
