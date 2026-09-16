@@ -1,0 +1,13 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "namePrefix":            { "value": "erpai" },
+    "location":              { "value": "eastus2" },
+    "containerImage":        { "value": "erpagent:latest" },
+    "chatModel":             { "value": "gpt-4o-mini" },
+    "chatModelVersion":      { "value": "2024-07-18" },
+    "embeddingModel":        { "value": "text-embedding-3-small" },
+    "embeddingModelVersion": { "value": "1" }
+  }
+}
