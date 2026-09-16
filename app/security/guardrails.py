@@ -86,10 +86,7 @@ def check_prompt(message: str, user_role: str) -> GuardResult:
             return GuardResult(
                 allowed=False,
                 category="prompt_injection",
-                reason=(
-                    "Se detectó un intento de prompt injection. La petición fue "
-                    "bloqueada antes de llegar al modelo."
-                ),
+                reason="Prompt bloqueado por seguridad (posible injection)."
             )
 
     if user_role != "admin":

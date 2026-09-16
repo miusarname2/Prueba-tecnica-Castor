@@ -39,12 +39,7 @@ _FRONT_MATTER_RE = re.compile(r"^---\s*\n(.*?)\n---\s*\n?(.*)$", re.DOTALL)
 
 
 def _parse_front_matter(text: str) -> tuple[dict[str, Any], str]:
-    """Parser YAML mínimo.
-
-    Nota: LlamaIndex `MetadataFilter.value` acepta int/float/str/list pero
-    NO acepta bool. Por eso normalizamos los booleanos a strings
-    ``"true"``/``"false"`` para poder filtrar con `FilterOperator.EQ`.
-    """
+    # Workaround manual porque LlamaIndex 0.11 no acepta booleanos en MetadataFilter
     m = _FRONT_MATTER_RE.match(text)
     if not m:
         return {}, text

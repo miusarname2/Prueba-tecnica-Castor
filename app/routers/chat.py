@@ -52,10 +52,7 @@ async def chat(request: ChatRequest) -> ChatResponse:
 
     if output_contains_restricted(result.response, request.user_role):
         return ChatResponse(
-            response=(
-                "La respuesta fue bloqueada porque contenía información restringida "
-                "para tu rol."
-            ),
+            response="Acceso denegado: La respuesta contenía datos fuera de tu alcance.",
             provider=result.provider,
             sources=result.sources,
             tools_used=result.tools_used,
